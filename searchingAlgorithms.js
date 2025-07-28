@@ -1,4 +1,4 @@
-// Implementation and practice on searching algorithms in JavaScript
+// Implementation of searching algorithms in JavaScript
 
 // 1. Simple linear Search (Single Loop)
 function searchValue(arr, value) {
