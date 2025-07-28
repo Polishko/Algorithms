@@ -1,2 +1,2 @@
 # Algorithms
-practice involving algorithms
+practice algorithms
