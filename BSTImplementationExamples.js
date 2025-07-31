@@ -18,7 +18,7 @@ function isValidBST(root) {
   return helper(root, -Infinity, Infinity);
 }
 
-// Alternative
+// Better alternative
 // function isValidBST(root) {
 //   if (!root.left && !root.right) return;
 
@@ -43,6 +43,29 @@ function isValidBST(root) {
 //   inOrder(root);
 //   return isValid;
 // }
+
+// Alternative solution
+function kthSmallest(root, k) {
+  let count = 0;
+  let result = null;
+
+  const helper = (node) => {
+    if (!node) return;
+    helper(node.left);
+
+    count++;
+
+    if (count === k) {
+      result = node.val;
+      return;
+    }
+
+    helper(node.right);
+  };
+
+  helper(root);
+  return result;
+}
 
 // Initial solution
 // function isValidBST(root) {
@@ -74,4 +97,40 @@ function isValidBST(root) {
 // root.right.left = new TreeNode(6);
 // root.right.right = new TreeNode(8);
 // const result = isValidBST(root);
+// console.log(result);
+
+// Find kth smallest number in a tree
+
+// Initial solution
+// function kthSmallest(root, k) {
+//   const visited = [];
+
+//   const helper = (node) => {
+//     if (visited.length === k) return;
+
+//     if (node) {
+//       helper(node.left);
+//       if (visited.length < k) {
+//         visited.push(node.val);
+//       }
+//       helper(node.right);
+//     }
+//   };
+
+//   helper(root);
+//   return visited.pop();
+// }
+
+// test output
+// const root = new TreeNode(
+//   5,
+//   new TreeNode(3, new TreeNode(2, new TreeNode(1)), new TreeNode(4)),
+//   new TreeNode(6)
+// );
+// const root = new TreeNode(5, new TreeNode(3, new TreeNode(2, new TreeNode(1))));
+// const root = new TreeNode(5);
+
+// The Kth smallest element in this BST
+// const k = 3;
+// const result = kthSmallest(root, k);
 // console.log(result);
